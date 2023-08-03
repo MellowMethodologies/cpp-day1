@@ -2,8 +2,6 @@
 #define WEAPON_HPP
 
 #include <string>
-#include "HumanA.hpp"
-#include "HumanB.hpp"
 
     class Weapon{
         private:
@@ -11,6 +9,8 @@
         public:
             const std::string getType();
             void setType(std::string type);
+            Weapon(std::string type);
+            ~Weapon();
     };
 
 #endif

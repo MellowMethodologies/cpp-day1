@@ -1,6 +1,6 @@
-CC= c++
+CC=c++
 
-NAME= Zombie
+NAME= program
 
 SRCS = main.cpp
 
@@ -12,6 +12,9 @@ $(NAME): $(SRCS)
 	$(CC) $(FLAGS) $^ -o $@
 
 clean:
-	rm Zombie
+	rm $(NAME)
+
+test:
+	touch test; echo "hello my world" > test; ./program test hello lwalid
 
 .Phony: clean all

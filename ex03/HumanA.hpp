@@ -1,5 +1,5 @@
-#ifndef HUMAN_HPP
-#define HUMAN_HPP
+#ifndef HUMANA_HPP
+#define HUMANA_HPP
 
     #include "Weapon.hpp"
     #include <string>
@@ -7,8 +7,8 @@
 
     class HumanA{
         private:
-            Weapon      WeaponA;
-            std::string name;
+            Weapon      &WeaponA; //reference because a reference cannot be NULL
+            std::string _name;
         public:
             HumanA(std::string name, Weapon &We);
             ~HumanA();
