@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Harl.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sbadr <sbadr@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/08/23 14:23:59 by sbadr             #+#    #+#             */
+/*   Updated: 2023/08/25 12:02:42 by sbadr            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 # include "Harl.hpp"
 
 	void Harl:: debug( void )
@@ -23,6 +35,14 @@
 	void Harl:: complain( std::string level )
 	{
 		int i = 0;
+		void (Harl::*ptr[4])() = 
+		{
+			&Harl:: error,
+			&Harl:: warning,
+			&Harl:: info,
+			&Harl:: debug,
+		};
+		
 		std::string louder[4] = {
 			"WARNING",
 			"INFO",
@@ -31,22 +51,5 @@
 		};
 		while (i != 4 && louder[i].compare(level) != 0)
 			i++;
-		switch (--i)
-		{
-			case 0:
-				warning();
-				break ;
-			case 1:
-				info();
-				break ;
-			case 2:
-				debug();
-				break ;
-			case 3:
-				error();
-				break ;
-			default:
-				std::cout << DEF << std::endl;
-				break ;
-		}
+		(this->*ptr[i])();
 	}

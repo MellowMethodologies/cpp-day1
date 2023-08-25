@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sbadr <sbadr@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/08/23 14:21:15 by sbadr             #+#    #+#             */
+/*   Updated: 2023/08/25 11:40:06 by sbadr            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <fstream>
 #include <string>
 #include <iostream>
@@ -27,14 +39,17 @@ int main(int ac, char **av)
 		std::ifstream ifs(av[1]);
 		if (!ifs.is_open())
 		{
-			std::cout << "std::cout<< error opening file!\n" << "Remember :: argv1 :file path | argv2 : s1 | argv3 : s2"<< std::endl;
+			std::cout << "std::cout<< error opening file!\n"
+			<< "Remember :: argv1 :file path | argv2 : s1 | argv3 : s2"
+			<< std::endl;
 			return 0;
 		}
 		std::ofstream ofs(fileof + ".replace");
 		while (std::getline(ifs, fileread))
 		{
 			ofs << ft_replace(fileread, av[2], av[3]);
-			ofs << '\n';
+			if (!ifs.eof())
+				ofs << '\n';
 		}
 	}
 	else
